@@ -3,7 +3,7 @@
 {% extends 'base.html' %}
 
 {% block page_title %}
-  <h2>Blog Posts</h2>
+  <h2>Дописи</h2>
 {% endblock %}
 
 {% block page_content %}
@@ -11,11 +11,28 @@
     {% for post in posts %}
       <h3><a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a></h3>
       <small>
-        {{ post.created_on.date }} | Categories:{% for category in post.categories.all %}
+        {{ post.created_on.date }} | Розділ:{% for category in post.categories.all %}
           <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>
         {% endfor %}
       </small>
-      <p>{{ post.body|slice:':400' }}...</p>
+      <p>{{ post.content|slice:':400' }}...</p>
     {% endfor %}
   {% endblock %}
+{% endblock %}
+{% block pagination %}
+  {% if posts.has_other_pages %}
+    <nav aria-label="Page navigation conatiner"></nav>
+    <ul>
+      {% if posts.has_previous %}
+        <li>
+          <a href="?page={{ posts.previous_page_number }}">&laquo; Назад</a>
+        </li>
+      {% endif %}
+      {% if posts.has_next %}
+        <li>
+          <a href="?page={{ posts.next_page_number }}">Далі &raquo;</a>
+        </li>
+      {% endif %}
+    </ul>
+  {% endif %}
 {% endblock %}
