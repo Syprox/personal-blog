@@ -1,0 +1,26 @@
+<!-- templates/base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <title>Мій блог</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  </head>
+
+  <body>
+    <h1>Мій особистий блог</h1>
+    <a href="{% url 'blog_index' %}">На головну</a>
+    <hr />
+    {% block page_title %}
+
+    {% endblock %}
+    {% block page_content %}
+
+    {% endblock %}
+    {% block pagination %}
+
+    {% endblock %}
+  </body>
+</html>

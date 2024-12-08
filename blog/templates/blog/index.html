@@ -3,36 +3,35 @@
 {% extends 'base.html' %}
 
 {% block page_title %}
-  <h2>Дописи</h2>
+  <h1>Дописи у блозі</h1>
 {% endblock %}
 
 {% block page_content %}
-  {% block posts %}
-    {% for post in posts %}
-      <h3><a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a></h3>
-      <small>
-        {{ post.created_on.date }} | Розділ:{% for category in post.categories.all %}
-          <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>
-        {% endfor %}
-      </small>
-      <p>{{ post.content|slice:':400' }}...</p>
-    {% endfor %}
-  {% endblock %}
+  {% for post in posts %}
+    <h2><a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a></h2>
+    <small>
+      {{ post.created_on.date }} | Розділ:{% for category in post.categories.all %}
+        <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>
+      {% endfor %}
+    </small>
+    <p>{{ post.content|slice:':400' }}...</p>
+  {% endfor %}
 {% endblock %}
 {% block pagination %}
   {% if posts.has_other_pages %}
-    <nav aria-label="Page navigation conatiner"></nav>
-    <ul>
-      {% if posts.has_previous %}
-        <li>
-          <a href="?page={{ posts.previous_page_number }}">&laquo; Назад</a>
-        </li>
-      {% endif %}
-      {% if posts.has_next %}
-        <li>
-          <a href="?page={{ posts.next_page_number }}">Далі &raquo;</a>
-        </li>
-      {% endif %}
-    </ul>
+    <nav aria-label="Page navigation conatiner">
+      <ul>
+        {% if posts.has_previous %}
+          <li>
+            <a href="?page={{ posts.previous_page_number }}">&laquo; Назад</a>
+          </li>
+        {% endif %}
+        {% if posts.has_next %}
+          <li>
+            <a href="?page={{ posts.next_page_number }}">Далі &raquo;</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
   {% endif %}
 {% endblock %}

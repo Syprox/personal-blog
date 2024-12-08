@@ -9,7 +9,7 @@ class CommentForm(forms.Form):
             attrs={"class": "form-control", "placeholder": "Ваше ім'я"}
         ),
     )
-    body = forms.CharField(
+    message = forms.CharField(
         widget=forms.Textarea(
             attrs={"class": "form-control", "placeholder": "Додайте коментар!"}
         )

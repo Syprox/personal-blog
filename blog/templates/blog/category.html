@@ -5,7 +5,7 @@
 {% block page_title %}
   <h2>{{ category }}</h2>
 {% endblock %}
-{% block pagination %}
+{% comment %} {% block pagination %}
   {% if posts.has_other_pages %}
     <nav aria-label="Page navigation conatiner"></nav>
     <ul>
@@ -21,4 +21,4 @@
       {% endif %}
     </ul>
   {% endif %}
-{% endblock %}
+{% endblock %} {% endcomment %}
