@@ -1,6 +1,7 @@
 # blog/forms.py
 
 from django import forms
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
 class CommentForm(forms.Form):
     author = forms.CharField(
@@ -10,7 +11,5 @@ class CommentForm(forms.Form):
         ),
     )
     message = forms.CharField(
-        widget=forms.Textarea(
-            attrs={"class": "form-control", "placeholder": "Додайте коментар!"}
-        )
+        widget=SummernoteWidget()
     )

@@ -19,7 +19,7 @@ def blog_index(request):
 
 def blog_category(request, category):
 
-    posts = Post.objects.filter(categories__name__contains=category, status=1).order_by("-created_on")
+    posts = Post.objects.filter(category__name__contains=category, status=1).order_by("-created_on")
     posts_on_page = 2
     page_number = request.GET.get('page')
 
@@ -31,24 +31,25 @@ def blog_category(request, category):
                   'blog/category.html',
                   context)
 
-def blog_detail(request, pk):
-    post = Post.objects.get(pk=pk)
+def blog_detail(request, slug):
+    post = Post.objects.get(slug=slug)
     form = CommentForm()
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = Comment(
                 author=form.cleaned_data["author"],
-                body=form.cleaned_data["message"],
+                message=form.cleaned_data["message"],
                 post=post,
             )
             comment.save()
             return HttpResponseRedirect(request.path_info)
-        
-    all_comments = Comment.objects.filter(post=post)
+    print("Вибраний допис: " + str(post.post_id))
+    comments = Comment.objects.filter(post=post)
+    
     context = {
         "post": post,
-        "comments": all_comments,
+        "comments": comments,
         "form": CommentForm(),
     }
 
