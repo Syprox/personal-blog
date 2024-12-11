@@ -3,6 +3,7 @@ from blog.models import Post, Comment
 from django.http import HttpResponseRedirect
 from blog.forms import CommentForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from .forms import ImageForm
 
 def blog_index(request):
 
@@ -71,3 +72,16 @@ def get_posts_list (posts, page_number, posts_on_page):
         print('Exception 2')
 
     return posts_list
+
+def image_upload_view(request):
+    """Process images uploaded by users"""
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            # Get the current instance object to display in the template
+            img_obj = form.instance
+            return render(request, 'blog/image_upload.html', {'form': form, 'img_obj': img_obj})
+    else:
+        form = ImageForm()
+        return render(request, 'blog/image_upload.html', {'form': form})

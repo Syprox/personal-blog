@@ -9,7 +9,7 @@
       <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>
     {% endfor %}
   </small>
-  <p>{{ post.content|linebreaks }}</p>
+  <p>{{ post.content|safe }}</p>
 
   <h3>Залиште коментар:</h3>
   <form method="post">

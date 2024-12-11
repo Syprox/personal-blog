@@ -1,7 +1,8 @@
 # blog/forms.py
 
 from django import forms
-from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+from .models import Image
+
 
 class CommentForm(forms.Form):
     author = forms.CharField(
@@ -11,5 +12,17 @@ class CommentForm(forms.Form):
         ),
     )
     message = forms.CharField(
-        widget=SummernoteWidget()
+        widget=forms.Textarea(
+            attrs={"class": "form-control", "placeholder": "Додайте коментар!"}
+        )
     )
+
+class ImageForm(forms.ModelForm):
+    """Form for the image model"""
+    class Meta:
+        model = Image
+        fields = ('title', 'image')
+
+""" from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+class SomeForm(forms.Form):
+    foo = forms.CharField(widget=SummernoteWidget()) """

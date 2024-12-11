@@ -14,7 +14,7 @@
         <a href="{% url 'blog_category' category.name %}">{{ category.name }}</a>
       {% endfor %}
     </small>
-    <p>{{ post.content|slice:':400' }}...</p>
+    <p>{{ post.content|slice:':400'|safe }}...</p>
   {% endfor %}
 {% endblock %}
 {% block pagination %}
