@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 
-if '127.0.0.1' in os.environ.get('ALLOWED_HOSTS'):
+if os.environ.get('ALLOWED_HOSTS') == '127.0.0.1':
     from dotenv import load_dotenv
     load_dotenv() # Завантаження змінних середовища з .env файлу
 
