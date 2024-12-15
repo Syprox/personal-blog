@@ -13,9 +13,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 
-if os.environ.get('ALLOWED_HOSTS') == '127.0.0.1':
-    from dotenv import load_dotenv
+from dotenv import load_dotenv
+try:
     load_dotenv() # Завантаження змінних середовища з .env файлу
+except:
+    pass
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

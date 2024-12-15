@@ -11,8 +11,9 @@ class Category(models.Model):
     category_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=30)
 
+
     class Meta:
-        verbose_name_plural = "Category"
+        verbose_name_plural = "Розділ"
 
     def __str__(self):
         return self.name
@@ -30,7 +31,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-created_on']
-        verbose_name_plural = "Post"
+        verbose_name_plural = "Допис"
 
     def get_absolute_url(self):
         return reverse("blog_detail", kwargs={"slug": str(self.slug)})
@@ -47,7 +48,7 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['-created_on']
-        verbose_name_plural = "Comment"
+        verbose_name_plural = "Коментар"
 
     def __str__(self):
         return f"{self.author} прокоментував '{self.post}'"
@@ -58,3 +59,7 @@ class Image(models.Model):
     
     def __str__(self):
         return self.title
+    
+    class Meta:
+        ordering = ['-title']
+        verbose_name_plural = "Зображення"
