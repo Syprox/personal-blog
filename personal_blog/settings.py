@@ -13,8 +13,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 
-from dotenv import load_dotenv
+
 try:
+    from dotenv import load_dotenv
     load_dotenv() # Завантаження змінних середовища з .env файлу
 except:
     pass
