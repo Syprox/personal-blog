@@ -5,29 +5,54 @@
   <head>
     <meta charset="utf-8" />
     <title>Мій блог</title>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=PT+Sans+Narrow:wght@400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
   </head>
 
   <body>
-    <h1>Мій особистий блог</h1>
-    <a href="{% url 'blog_index' %}">На головну</a>
-    <hr />
+    <header>
+      <div id="logo">
+        <h1>Мій особистий блог</h1>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="{% url 'blog_index' %}">Головна</a>
+            {% comment %}
+          </li>
+          <li>
+            <a href="{% url 'blog_about' %}">Про мене</a>
+          </li>
+          <li>
+            <a href="{% url 'blog_contact' %}">Контакти</a>
+          </li> {% endcomment %}
+        </ul>
+      </nav>
+    </header>
+    <main>
+      {% block page_title %}
 
-    {% block page_title %}
+      {% endblock %}
 
-    {% endblock %}
+      {% block page_content %}
 
-    {% block page_content %}
+      {% endblock %}
 
-    {% endblock %}
+      {% block pagination %}
 
-    {% block pagination %}
+      {% endblock %}
 
-    {% endblock %}
+      {% block image_upload %}
 
-    {% block image_upload %}
-
-    {% endblock %}
+      {% endblock %}
+    </main>
+    <footer>
+      <p>&copy; 2024 Сергій Савін</p>
+    </footer>
+    <script src="{% static 'js/main-script.js' %}"></script>
   </body>
 </html>

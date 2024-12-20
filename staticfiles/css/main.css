@@ -1,0 +1,67 @@
+:root {
+  --fs--2: clamp(0.8784rem, 0.8627rem + 0.0781vw, 0.9877rem);
+  --fs--1: clamp(0.9372rem, 0.9124rem + 0.1242vw, 1.1111rem);
+  --fs-0: clamp(1rem, 0.9643rem + 0.1786vw, 1.25rem);
+  --fs-1: clamp(1.067rem, 1.0185rem + 0.2423vw, 1.4063rem);
+  --fs-2: clamp(1.1385rem, 1.0751rem + 0.3168vw, 1.582rem);
+  --fs-3: clamp(1.2148rem, 1.1341rem + 0.4036vw, 1.7798rem);
+  --fs-4: clamp(1.2962rem, 1.1953rem + 0.5044vw, 2.0023rem);
+  --fs-5: clamp(1.383rem, 1.2588rem + 0.6211vw, 2.2525rem);
+}
+
+html {
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+body {
+  font-family: "PT Sans", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: var(--fs-0);
+  line-height: 1.25;
+  width: clamp(20em, 90%, 44em);
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+main h1 {
+  font-size: var(--fs-5);
+  margin: 1.6em 0 0.825em;
+}
+main h2 {
+  font-size: var(--fs-4);
+  margin: 1.4em 0 0.725em;
+}
+main h3 {
+  font-size: var(--fs-3);
+  margin: 1.2em 0 0.625em;
+}
+main h4 {
+  font-size: var(--fs-2);
+  margin: 1em 0 0.525em;
+}
+main h5 {
+  font-size: var(--fs-1);
+  margin: 0.8em 0 0.425em;
+}
+main h6 {
+  font-size: var(--fs-0);
+  margin: 0.6em 0 0.325em;
+}
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+  color: #333333;
+}
+main p {
+  font-size: var(--fs-0);
+  text-indent: 2em;
+  text-align: justify;
+  margin: 0.4em 0;
+  color: #1a1a1a;
+  line-height: 1.25;
+}/*# sourceMappingURL=main.css.map */
