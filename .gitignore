@@ -161,3 +161,4 @@ cython_debug/
 
 #SASS files
 *.scss
+*.map
